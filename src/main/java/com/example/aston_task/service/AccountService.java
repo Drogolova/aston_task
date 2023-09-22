@@ -6,6 +6,10 @@ import com.example.aston_task.model.BankAccount;
 import com.example.aston_task.repository.BankAccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class AccountService {
     private final BankAccountRepository bankAccountRepository;
@@ -32,5 +36,9 @@ public class AccountService {
             bankAccountRepository.deleteById(bankAccount.getAccountNumber());
         }
         return bankAccount;
+    }
+
+    public List<BankAccount> getAllBankAccounts() {
+        return new ArrayList<>(bankAccountRepository.findAll());
     }
 }
